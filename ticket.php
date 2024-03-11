@@ -9,14 +9,13 @@ if(!$connect_db){
 	die('Ошбика подключения к базе данных ');
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['insert_ticket'])) {
   if (!empty($_POST['ticket_description']) && !empty($_POST['ticket_staff']) && !empty($_POST['topic_ticket'])) {
 
   // SQL запросы
     $sql_select_topics = 'select * from topic_tickets';
     $query_get_topic = pg_query($connect_db, $sql_select_topics);
-    $sql_select_staff = '
-    select user_id, user_name, user_last_name
+    $sql_select_staff = 'select user_id, user_name, user_last_name
     from user_t
     where user_is_staff = true';
     $query_get_staff = pg_query($connect_db, $sql_select_staff);
