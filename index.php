@@ -9,9 +9,10 @@
   <div class="ticket-list">
     <?php
 //подключение к postgres
-    include_once('connection.php');
+    include_once('private/connection.php');
     $conn = new Connection();
     $connect_db = $conn->open();
+
 //запрос для выводы тикетов
     $sql_select_tickets = 'SELECT client.user_name AS client_name,
     client.user_last_name AS client_last_name,
@@ -37,29 +38,22 @@
     ?>
 
     <table>
-      <caption>лист тикетов</caption>
+      <caption>Лист тикетов</caption>
       <tr>
-        <th>заказчик</th>
-        <th>отдел</th>
-        <th>кабинет</th>
-        <th>заголок</th>
-        <th>описание</th>
-        <th>исполнитель</th>
-        <th>дата создания</th>
-        <th>комментарий</th>
-        <th>статус</th>
+        <th>Заказчик</th>
+        <th>Отдел</th>
+        <th>Кабинет</th>
+        <th>Заголок</th>
+        <th>Описание</th>
+        <th>Исполнитель</th>
+        <th>Дата создания</th>
+        <th>Комментарий</th>
+        <th>Статус</th>
       </tr>
         <?php
 //вывод тикеток
         while ($row = pg_fetch_object($query_get_ticket)){
           ?>
-      <!-- $status_ticket_count = [
-        $row->ticket_id => [
-          'status_ticket_name' => $row->status,
-          'status_ticket_count' => 0,
-
-        ],
-        ]; -->
         <tr>
           <td><?php echo $row->client_name.' '.$row->client_last_name; ?></td>
           <td><?php echo $row->client_section; ?></td>
@@ -68,19 +62,18 @@
           <td><?php echo $row->ticket_description; ?></td>
           <td><?php echo $row->staff_name.' '.$row->staff_last_name; ?></td>
           <td><?php echo $row->ticket_date_begin; ?></td>
-          <td><?php echo $row->ticket_comment; ?></td>
           <td>
-            <a href="update_status_ticket.php?ticket_id=<?php echo $row->ticket_id; ?>&status_ticket_name=<?php echo $row->status?>">
-              <?php echo $row->status?>
-              <!-- <input name="status_ticket_name" type="submit" value="<?php //echo $row->status; ?>"/> -->
+            <a href="private/handler/update_status_ticket.php?ticket_id=<?php echo $row->ticket_id; ?>&status_ticket_name=<?php echo $row->status_name?>">
+              <?php echo $row->status_name?>
             </a>
           </td>
+          <td><?php echo $row->ticket_comment; ?></td>
         </tr>
         <?php
       }
       ?>
   </table>
-  <form action="ticket.php" method ="POST">
+  <form action="private/handler/insert_ticket.php" method ="POST">
 
     <label>Заголовок</label>
     <input list="topics" type="text" name="topic_ticket" placeholder=""/>
@@ -111,14 +104,9 @@
       }
       ?>
     </datalist>
-    <br>
-    <input type="submit" name="insert_ticket" value = "test"/>
+    <br
+>    <input type="submit" name="insert_ticket" value = "test"/>
   </form>
 </div>
 </body>
-<script type="text/javascript">
-  function changeStatusTicket(ticket_id) {
-    let statusTicketInput = document.getElementById('ticket_id');
-  }
-</script>
 </html>
