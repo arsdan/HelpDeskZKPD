@@ -1,5 +1,5 @@
 <?php
-include_once('connection.php');
+include_once '../connection.php';
 if(isset($_GET['ticket_id'] )){
 	$conn = new Connection();
 	$connect_db = $conn->open();
@@ -21,7 +21,7 @@ if(isset($_GET['ticket_id'] )){
 	$stmt = pg_execute($connect_db, "my_query", [$new_status_name, $status_name, $ticket_id]);
 
 	var_dump($new_status_name);
-	header('Location: index.php');
+	header('Location: ../../index.php');
 	exit();
 }
 else{

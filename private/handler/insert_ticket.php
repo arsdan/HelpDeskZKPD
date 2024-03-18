@@ -1,17 +1,11 @@
 <?php
-//подключение к postgres
-$host = 'localhost';
-$port = '5432';
-$dbname = 'postgres';
-$user = 'postgres';
-$connect_db = pg_connect('host='.$host.' port='.$port.' dbname='.$dbname.' user='.$user);
-if(!$connect_db){
-	die('Ошбика подключения к базе данных ');
-}
+include_once '../connection.php';
 
 if (isset($_POST['insert_ticket'])) {
   if (!empty($_POST['ticket_description']) && !empty($_POST['ticket_staff']) && !empty($_POST['topic_ticket'])) {
-
+    $conn = new Connection();
+    $connect_db = $conn->open();
+  
   // SQL запросы
     $sql_select_topics = 'select * from topic_tickets';
     $query_get_topic = pg_query($connect_db, $sql_select_topics);
@@ -21,8 +15,8 @@ if (isset($_POST['insert_ticket'])) {
     $query_get_staff = pg_query($connect_db, $sql_select_staff);
 
 // Записываем id значений
-    $ticket_client = 1; //нужно добавить авторизацию
-  //$ticket_comment =
+    $ticket_client = 1; //добавить авторизацию
+  //$ticket_comment = //добавить комментарий
     $ticket_description = $_REQUEST['ticket_description'];
     while($row = pg_fetch_object($query_get_staff)){
     	if($row->user_name.$row->user_last_name == $_REQUEST['ticket_staff']){

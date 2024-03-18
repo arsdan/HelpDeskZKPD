@@ -9,14 +9,6 @@ class UserT
     private $user_cabinet;
     private $user_is_staff = 0;
 
-
-    // public function __construct(, $user_name, $user_last_name, $user_midlle_name, $user_phone, $user_email, $user_section, $user_cabinet, $user_is_staff) {
-    //     // Доступ к эземпляру класса с помощью $this
-    //     $this->user_id = $user_id;
-    //     $this->user_name =
-    // }
-
-    // Методы объявляются как функции принадлежащие классу
     public function setFullName($user_full_name)
     {
         $this->user_full_name = $user_full_name;
@@ -60,14 +52,6 @@ class UserT
         }
         return true;
     }
-
-    private function insertToDb()
-    {
-        $conn = new Connection();
-        $connect_db = $conn->open();
-
-    }
-
 
 }
 ?>

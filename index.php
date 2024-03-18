@@ -8,8 +8,8 @@
 <body>
   <div class="ticket-list">
     <?php
+    include('./private/connection.php');
 //подключение к postgres
-    include_once('private/connection.php');
     $conn = new Connection();
     $connect_db = $conn->open();
 
