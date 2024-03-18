@@ -18,6 +18,16 @@ class UserT
         return $this->user_full_name;
     }
 
+    public function getUser()
+    {
+        $user[] = $this->user_full_name;
+        $user[] = $this->user_phone;
+        $user[] = $this->user_email;
+        $user[] = $this->user_section;
+        $user[] = $this->user_cabinet;
+        return $user;
+    }
+
     public function setPhone($user_phone)
     {
         $this->user_phone = $user_phone;

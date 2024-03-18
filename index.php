@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <title></title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="ticket-list">
@@ -50,10 +49,10 @@
         <th>Комментарий</th>
         <th>Статус</th>
       </tr>
-        <?php
+      <?php
 //вывод тикеток
-        while ($row = pg_fetch_object($query_get_ticket)){
-          ?>
+      while ($row = pg_fetch_object($query_get_ticket)){
+        ?>
         <tr>
           <td><?php echo $row->client_name.' '.$row->client_last_name; ?></td>
           <td><?php echo $row->client_section; ?></td>
@@ -72,41 +71,42 @@
         <?php
       }
       ?>
-  </table>
-  <form action="private/handler/insert_ticket.php" method ="POST">
+    </table>
+    <form action="private/handler/insert_ticket.php" method ="POST">
 
-    <label>Заголовок</label>
-    <input list="topics" type="text" name="topic_ticket" placeholder=""/>
-    <datalist id="topics">
-      <?php
-      $sql_select_topics = 'select * from topic_tickets';
-      $query_get_topic = pg_query($connect_db, $sql_select_topics);
-      while($row = pg_fetch_object($query_get_topic)){
-        echo '<option value = '.$row->topic_ticket_name.'>';
-      }
-      ?>
-    </datalist>
+      <label>Заголовок</label>
+      <input list="topics" type="text" name="topic_ticket" placeholder=""/>
+      <datalist id="topics">
+        <?php
+        $sql_select_topics = 'select * from topic_tickets';
+        $query_get_topic = pg_query($connect_db, $sql_select_topics);
+        while($row = pg_fetch_object($query_get_topic)){
+          echo '<option value = '.$row->topic_ticket_name.'>';
+        }
+        ?>
+      </datalist>
 
-    <label>Описание</label>
-    <input type="text" name="ticket_description" placeholder="">
+      <label>Описание</label>
+      <input type="text" name="ticket_description" placeholder="">
 
-    <label>Исполнитель</label>
-    <input list="staffs" type="text" name="ticket_staff" placeholder="">
-    <datalist id="staffs">
-      <?php
-      $sql_select_staff = '
-      select user_id, user_name, user_last_name
-      from user_t
-      where user_is_staff = true';
-      $query_get_staff = pg_query($connect_db, $sql_select_staff);
-      while($row = pg_fetch_object($query_get_staff)){
-        echo'<option value ='.$row->user_name.$row->user_last_name.'>';
-      }
-      ?>
-    </datalist>
-    <br
->    <input type="submit" name="insert_ticket" value = "test"/>
-  </form>
-</div>
-</body>
-</html>
+      <label>Исполнитель</label>
+      <input list="staffs" type="text" name="ticket_staff" placeholder="">
+      <datalist id="staffs">
+        <?php
+        $sql_select_staff = '
+        select user_id, user_name, user_last_name
+        from user_t
+        where user_is_staff = true';
+        $query_get_staff = pg_query($connect_db, $sql_select_staff);
+        while($row = pg_fetch_object($query_get_staff)){
+          echo'<option value ='.$row->user_name.$row->user_last_name.'>';
+        }
+        ?>
+      </datalist>
+      <br>
+      <input type="submit" name="insert_ticket" value = "test"/>
+    </form>
+
+    <a href="view_user.php">Пользователь</a>
+  </body>
+  </html>
