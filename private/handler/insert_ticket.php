@@ -33,7 +33,7 @@ if (isset($_POST['insert_ticket'])) {
     $sql_insert_ticket = 'INSERT INTO tickets (ticket_description, topic_ticket_id, ticket_client, ticket_staff) VALUES ($1,$2,$3,$4)';
     $stmt = pg_prepare($connect_db, "my_query", $sql_insert_ticket);
     $stmt = pg_execute($connect_db, "my_query", [$ticket_description, $topic_ticket_id,1, $ticket_staff_id]);
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
   }
   else {
