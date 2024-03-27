@@ -1,1 +1,0 @@
-<?php $non_git_conn_str = 'host=localhost port=5432 dbname=hpbd user=hpadm password=iH4rM5yD9j' ?>
