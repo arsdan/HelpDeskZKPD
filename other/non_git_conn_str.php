@@ -1,1 +1,1 @@
-<?php $connection_str = 'host= port= dbname= user= password=' ?>
+<?php $connection_str = 'host=localhost port=5432 dbname=hpbd user=hpadm password=iH4rM5yD9j' ?>
