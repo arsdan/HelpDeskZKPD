@@ -13,5 +13,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: cd /var/www/www-root/data/www/vm589033.eurodir.ru && git pull
             
