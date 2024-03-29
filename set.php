@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 $bot_api_key  = '7026580759:AAGgiEBzJo7JTiYm6J8qCcio5YbK-IokFWM';
 $bot_username = '@help_desk_zkpd_bot';
-$hook_url     = 'https://vm589033.eurodir.ru/';
+$hook_url     = 'https://vm589033.eurodir.ru/hook.php';
 
 try {
     // Create Telegram API object
@@ -18,4 +18,3 @@ try {
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // log telegram errors
     // echo $e->getMessage();
-}
