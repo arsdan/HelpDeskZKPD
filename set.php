@@ -2,9 +2,9 @@
 // Load composer
 require __DIR__ . '/vendor/autoload.php';
 
-$bot_api_key  = 'your:bot_api_key';
-$bot_username = 'username_bot';
-$hook_url     = 'https://your-domain/path/to/hook.php';
+$bot_api_key  = '7026580759:AAGgiEBzJo7JTiYm6J8qCcio5YbK-IokFWM';
+$bot_username = '@help_desk_zkpd_bot';
+$hook_url     = 'https://vm589033.eurodir.ru/';
 
 try {
     // Create Telegram API object
